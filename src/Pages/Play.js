@@ -70,7 +70,8 @@ const Play
   ]
   
 
-  const ENDPOINT = 'localhost:5000'
+  const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
+  //local host 5000 for development 
 
   
   
