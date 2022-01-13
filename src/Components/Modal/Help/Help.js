@@ -3,7 +3,7 @@ import './Help.css';
 import { ImArrowRight } from 'react-icons/im';
 
 const Help = ({helpTopicHandler}) => {
-  const [helpState, setHelpState] = useState('Update Character Stats');
+  const [helpState, setHelpState] = useState('Posting Character Stats');
 
   useEffect(() => {
     helpTopicHandler(helpState)
