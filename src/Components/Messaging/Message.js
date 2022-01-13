@@ -2,7 +2,7 @@ import React from 'react';
 import './Message.css';
 
 
-const Message = ({message}) => {
+const Message = ({message, name}) => {
 
 
   return (
@@ -20,7 +20,8 @@ const Message = ({message}) => {
           <h2 style={{color: "white"}}>To:</h2>
           </div>
           <div className='to-right'>
-            {message.recipients.map(player => <p key={player} style={{color: "rgb(21, 169, 8)", marginRight: "5px"}}>{` ${player} `} </p>)}
+            {/* make this so it only filters out the recipient user name if they were the sender */}
+            {message.recipients.filter(player => player !== message.name).map(player => <p key={player} style={{color: "rgb(21, 169, 8)", marginRight: "5px"}}>{` ${player} `} </p>)}
           </div>
         </div>
 

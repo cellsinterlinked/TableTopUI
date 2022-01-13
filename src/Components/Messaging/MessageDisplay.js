@@ -18,7 +18,7 @@ const MessageDisplay = ({messages, name}) => {
 
    return (
     <ScrollToBottom className='message-display-container'>
-      {messages && newArr && newArr.map((message) => <Message key={message.message} message={message}/> )}
+      {messages && newArr && newArr.map((message) => <Message key={message.message} message={message} name={name}/> )}
     </ScrollToBottom>
   )
 }

@@ -22,6 +22,7 @@
   text-align: center;
   margin: auto;
   color: white;
+  font-size: 0.7rem;
 }
 
 .initiative-icon-container {
@@ -43,6 +44,7 @@
 
 .initiative-dice-box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -53,4 +55,9 @@
 .initiative-dice-box p {
   text-align: center;
   color: white;
+}
+
+.total-init-container {
+  display: flex;
+  justify-content: center;
 }

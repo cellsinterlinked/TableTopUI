@@ -15,7 +15,7 @@ function Dropdown({ title, items, multiSelect = false, headingStyle, setSingleSt
         setSelection([item]);
         setSingleState([item]);
         setSecondState(items.slice(0, [item.value]))
-        // this is going to fuck up your front page if you keep it like this. Consider making an if statement or another component for this drop down completely
+        setOpen(false)
 
       } else if (multiSelect) {
         setSelection([...selection, item]);

@@ -11,10 +11,16 @@
   cursor: pointer;
   width: 100%;
   padding: 0 20px;
-  background-color: rgba(0, 0, 0, 0.712);
-  border: 1px solid rgb(161, 161, 161);
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  background-color: rgba(0, 0, 0, 0.822);
+  border-bottom: 1px solid rgb(161, 161, 161);
+  /* box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; */
   outline: none;
+}
+
+.drop-header:hover {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: rgba(42, 42, 42, 0.781);
 }
 
 .drop-header__title--bold {
@@ -90,6 +96,8 @@
 }
 
 .front-drop-list {
+  top: 4rem;
+  position: absolute;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   padding: 0;
   margin: 0;
@@ -123,7 +131,7 @@
   text-align: left;
   border-left: 1px solid rgb(175, 175, 175);
   border-right: 1px solid rgb(175, 175, 175);
-  color: rgb(134, 134, 134);
+  color: rgb(226, 226, 226);
   font-family: gilSans;
   outline: none;
   background-color: rgba(0, 0, 0, 0.714);
@@ -149,7 +157,7 @@
   width: 100%;
   padding: 0 20px;
   padding-top: 4px;
-  background-color: rgba(0, 0, 0, 0.714);
+  background-color: rgba(0, 0, 0, 0.822);
   border: 2px solid rgb(165, 165, 165);
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   outline: none;
@@ -158,7 +166,7 @@
 
 .front-drop-header__title--bold {
   font-family: gilSans;
-  color: rgb(134, 134, 134);
+  color: rgb(235, 235, 235);
   letter-spacing: 1px;
   font-size: 1rem;
   margin-top: 0;
@@ -182,3 +190,7 @@
 .rotated {
   transform: rotate(180deg);
 }
+
+/* .midTitle {
+  font-size: 0.8rem;
+} */

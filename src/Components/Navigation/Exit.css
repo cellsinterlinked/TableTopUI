@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 8rem;
+  height: 6rem;
   margin: auto;
 }
 
@@ -22,8 +22,9 @@
   margin-right: 2rem;
   font-family: gilSans;
   letter-spacing: 1px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   padding-top: 5px;
+  border-radius: 5px;
 }
 
 .yes-exit:hover {

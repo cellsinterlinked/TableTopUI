@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './DiceRoll.css';
 import diceSound from  '../Resources/diceRoll.mp3';
 import {Howl, Howler} from 'howler';
+import { BsReverseLayoutSidebarInsetReverse } from 'react-icons/bs';
 
 const DiceRoll = ({sendPlayerRoll}) => {
   const [result, setResult] = useState(null)
   const [type, setType] = useState(4)
   const [number, setNumber] = useState(1)
+  
 
   const audioClips = [
     {sound: diceSound, label: "dice"}
@@ -77,17 +79,19 @@ const DiceRoll = ({sendPlayerRoll}) => {
   }
 
   const diceMaths = () => {
-    let diceVal = 0
+    let numArr = []
     if (number > 1) {
       for (let i = 1;  i <= number; i++) {
-        diceVal = diceVal + Math.floor(Math.random() * type) + 1
+        numArr.push(Math.floor(Math.random() * type) + 1)
         
       }
     } else {
-      diceVal = Math.floor(Math.random() * type) + 1
+
+      numArr.push(Math.floor(Math.random() * type) + 1)
+      
     }
-    setResult(diceVal);
-    sendPlayerRoll(diceVal)
+    setResult(numArr);
+    sendPlayerRoll(numArr)
     diceFunc(audioClips[0].sound)
     // console.log(diceVal);
   }
@@ -103,6 +107,23 @@ const DiceRoll = ({sendPlayerRoll}) => {
     setResult(null);
     setType(4);
     setNumber(1);
+   
+  }
+
+  const totalFunc = () => {
+    if (!result || result.length < 1) {
+      return 0;
+    }
+    if (result.length > 0) {
+      let total = 0
+     for (let i = 0; i < result.length; i++) {
+       total = total + result[i]
+     }
+      return total;
+    } else {
+      return 0;
+    }
+
   }
 
   return (
@@ -126,14 +147,18 @@ const DiceRoll = ({sendPlayerRoll}) => {
         <span className="custom-arrow" />
       </div>
       </div>
+      <p className="rollInstructions">Select the type of dice to roll followed by the number of dice</p>
       <div className="diceButtonContainer">
         <button type="button" onClick={clearRoll}>CLEAR</button>
         <button type="button" onClick={diceMaths}>ROLL DICE</button>
       </div>
       <div className="diceResultContainer">
             <div className="diceResultBackground">
-          {result && <h1>{result}</h1>}
+          {result &&  result.map((roll, index) => <div className="roll_container"><h1>{roll}</h1></div>)}
+          
             </div>
+            {(result && result.length > 0) && <div style={{display:"flex", alignItems: "center", flexDirection: "column"}}><p>TOTAL</p><div className="roll_container"><h1 style={{fontSize: "1rem"}}>{totalFunc()}</h1></div></div>}
+
       </div>
 
     </div>

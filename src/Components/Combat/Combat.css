@@ -124,13 +124,16 @@
 .monster-token-container:hover,
 .monster-token-container:focus,
 .monster-token-container:active {
-  border: 1px solid rgb(41, 255, 255);
+  border: 1px solid rgb(0, 148, 20);
 }
 
 .monster-token-container img {
-  height: auto;
-  width: 100%;
+  min-height: 100%;
+  max-height: 140%;
+  min-width: 100%;
+  max-width: 140%;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .dead-token {

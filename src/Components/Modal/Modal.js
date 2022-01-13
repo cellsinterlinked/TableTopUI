@@ -9,7 +9,7 @@ const ModalOverlay = (props) => {
     <div className={`modal ${props.modalStyle}`}>
       
       <header className="modalHeader">
-        <h2>{props.header}</h2>
+        <h2 style={{margin: "1rem"}}>{props.header}</h2>
       </header>
       <form
         onSubmit={

@@ -43,7 +43,7 @@ const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes,
 
       {displayNotes && 
       <div className="scroll-hate">
-        <h1 className="notes-header">Notes</h1>
+        <h1 className="notes-header">Notes about {item.name} </h1>
       <ScrollToBottom className="npc-notes-container">
         {localNotes !== [] && localNotes.map((note, index) => (<li key={index}>{note}</li>) )}
         {localNotes === [] && <h1>Enter Text Below To Leave Notes About This NPC</h1>}
@@ -54,7 +54,7 @@ const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes,
         <textarea id="noteInput" className="npc-notes-input" placeholder="Add a new note" onChange={(event) => setNotePost(event.target.value)}>
 
         </textarea>
-        <button onClick={noteHandler}>Write Note</button>
+        <button onClick={noteHandler}>POST NOTE</button>
         </div>
         
       
@@ -64,11 +64,12 @@ const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes,
 
       
       {!displayNotes && <div className="npc-image">
-        <img src={item.portrait} alt=""></img>
+      <h1 className="notes-header" style={{marginTop: '0px', marginBottom: "1rem"}} >{item.name}</h1>
+        <img style={{marginBottom: "1rem"}} src={item.portrait} alt=""></img>
       </div>}
-      <p>{item.name}</p>
-      {role === "DM" && <button onClick={deleteHandler}>DELETE</button>}
-      {!displayNotes && <button onClick={notesHandler}>NOTES</button>}
+      {/* <p>{item.name}</p> */}
+      {role === "DM" && <button style={{marginTop: displayNotes === false ? "1rem" : "0rem"}} onClick={deleteHandler}>DELETE NPC</button>}
+      {!displayNotes && <button style={{marginTop: role === "PLAYER" ? "1rem" : "0rem"}} onClick={notesHandler}>NOTES</button>}
       {displayNotes && <button onClick={protraitHandler}>PORTRAIT</button>}
 
     </div>

@@ -25,9 +25,19 @@
   /* margin-top: 0.5rem; */
 }
 
-.charInputDiv p {
-  margin: 0;
+.charInputDiv_image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 12rem;
+  align-items: center;
+  color: black;
+  font-weight: bold;
 }
+
+/* .charInputDiv p {
+  margin: 0;
+} */
 
 .charBox1 {
   justify-content: center;
@@ -71,13 +81,43 @@
 }
 
 .charInput {
-  width: 3rem;
+  width: 1.5rem;
   outline: none;
   justify-self: flex-end;
   border: none;
   height: 1.3rem;
   border: 1px solid black;
   background-color: transparent;
+  display: flex;
+  padding-left: 1rem;
+}
+
+.plus-box-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.charInput_image {
+  width: 12rem;
+  outline: none;
+  height: 1.3rem;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.plus {
+  display: flex;
+  justify-self: flex-end;
+  margin-right: 5px;
+  margin-top: 1.3rem;
+  color: black;
+}
+
+.portrait-explanation {
+  font-size: 0.8rem;
+  color: black;
+  text-align: center;
 }
 
 #diceImage {
@@ -112,9 +152,12 @@
   border: 1px solid black;
   outline: none;
   color: white;
-  background-color: rgb(97, 97, 97);
+  background-color: rgb(7, 7, 7);
+  border-radius: 4px;
+  box-shadow: 4px 4px 12px black;
+  cursor: pointer;
 }
 
 .submit-stats-container button:hover {
-  background-color: black;
+  background-color: rgb(0, 70, 21);
 }

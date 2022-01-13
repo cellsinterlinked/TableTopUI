@@ -3,27 +3,26 @@
   /* padding-top: 5rem;
   padding-bottom: 5rem; */
   width: 20rem;
-  height: 100%;
+  height: 100vh;
   border: 1px solid grey;
+  background-color: rgba(17, 17, 17, 0.349);
+  overflow: scroll;
 }
 
 .minions-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.657);
-  font-size: 16px;
-  padding: 15px 20px 10px 20px;
-  border: 0;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
-  text-align: center;
-  border: 1px solid grey;
-  height: 4rem;
-  color: rgb(219, 219, 219);
-  font-family: gilSans;
+  background-color: rgba(56, 56, 56, 0.644);
+  height: 2.5rem;
+  border: 1px solid rgb(167, 167, 167);
+  padding-top: 6px;
+  margin-bottom: 1rem;
+  color: rgb(224, 224, 224);
+  font-size: 0.9rem;
   outline: none;
+  width: 70%;
+  font-family: gilSans;
   letter-spacing: 1px;
+  border-radius: 8px;
+  margin: auto;
 }
 
 .minions-button:hover {
@@ -137,4 +136,23 @@
   width: 100%;
   height: 100%;
   border-bottom: 1px solid grey;
+}
+
+.combatButton_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.dmCombat_instructions {
+}
+
+.dmCombat_instructions p {
+  color: rgb(155, 155, 155);
+  font-size: 0.9rem;
+  font-family: gilSans;
+  text-align: center;
+  margin-left: 12px;
+  margin-right: 12px;
 }

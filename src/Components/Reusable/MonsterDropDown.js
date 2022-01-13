@@ -8,7 +8,7 @@ function Dropdown({ title, items, multiSelect = false, headingStyle, setSingleSt
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
-  Dropdown.handleClickOutside = () => setOpen(false);
+  // Dropdown.handleClickOutside = () => setOpen(false);
 
   function handleOnClick(item) {
     console.log("lol i dont do anything")
@@ -79,8 +79,10 @@ function Dropdown({ title, items, multiSelect = false, headingStyle, setSingleSt
   );
 }
 
-const clickOutsideConfig = {
-  handleClickOutside: () => Dropdown.handleClickOutside,
-};
+// const clickOutsideConfig = {
+//   handleClickOutside: () => Dropdown.handleClickOutside,
+// };
 
-export default onClickOutside(Dropdown, clickOutsideConfig);
+// export default onClickOutside(Dropdown, clickOutsideConfig);
+
+export default Dropdown;

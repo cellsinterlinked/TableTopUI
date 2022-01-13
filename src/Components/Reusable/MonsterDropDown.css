@@ -15,6 +15,7 @@
   /* border: 1px solid rgb(161, 161, 161); */
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   outline: none;
+  border-bottom: 1px solid rgb(161, 161, 161);
 }
 
 .monster-drop-header:hover {
@@ -137,6 +138,8 @@
 
 .monster-input {
   height: 1.3rem;
+  /* border-radius: 5px;
+  background-color: rgb(212, 212, 212); */
 }
 
 .monster-input-container {

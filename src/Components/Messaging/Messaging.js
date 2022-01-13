@@ -8,7 +8,7 @@ import MessageDropdown from '../Reusable/MessageDropDown';
 
 
 
-const Messaging = ({setMessage, sendPlayerMessage, message, setRecipients, users, recipients, messages, name, unreadMessages, setUnreadMessages}) => {
+const Messaging = ({setMessage, sendPlayerMessage, message, setRecipients, users, recipients, messages, name, unreadMessages, setUnreadMessages, partyData}) => {
 
   useEffect(() => {
     return () => {
@@ -27,10 +27,10 @@ const Messaging = ({setMessage, sendPlayerMessage, message, setRecipients, users
 
   return(
     <div className="messaging-container">
-    <DropDowns users={users} setRecipients={setRecipients} recipients={recipients} name={name}/>
+    <DropDowns users={users} setRecipients={setRecipients} recipients={recipients} name={name} partyData={partyData}/>
     {/* <MessageDropdown items={users} name={name} singleState={recipients} setSingleState={setRecipients} title="CHOOSE RECIPIENTS"/> */}
     <MessageDisplay messages={messages} name={name}/>
-    <MessageInput setMessage={setMessage} sendPlayerMessage={sendPlayerMessage} message={message}/>
+    <MessageInput setMessage={setMessage} sendPlayerMessage={sendPlayerMessage} message={message} recipients={recipients}/>
 
     </div>
   )

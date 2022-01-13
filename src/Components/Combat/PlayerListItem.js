@@ -6,7 +6,7 @@ const PlayerListItem = ({stats, setPlayerSize, playerSize, partyData, name}) => 
     <div className="player-list-item-container">
 
       <div className="player-movement-portrait-container">
-        {partyData[name] !== "" ? <img alt="" src={partyData[name].text.portrait}/> : <h1 className="no-portrait-content">YOU MUST SET CHARACTER STATS AND PORTRAIT BEFORE USING THE COMBAT MAP!</h1>}
+        {(partyData[name] !== "" && partyData[name].text.portrait !== "") ? <img alt="" src={partyData[name].text.portrait}/> : <h1 className="no-portrait-content">YOU MUST SET CHARACTER STATS AND PORTRAIT BEFORE USING THE COMBAT MAP!</h1>}
       </div>
 
       <div className="player-movement-control-bar">
@@ -17,6 +17,7 @@ const PlayerListItem = ({stats, setPlayerSize, playerSize, partyData, name}) => 
               <div className={playerSize === 'medium' ? 'player-size-button highlighted' : 'player-size-button'} onClick={() => setPlayerSize('medium')}>M</div>
               <div className={playerSize === 'large' ? 'player-size-button highlighted' : 'player-size-button'} onClick={() => setPlayerSize('large')}>L</div>
           </div>
+          <p className="playerMove-instructions">Select a size for your character miniature that fits the battle map grid.Then click on where you want to move on the map. Click "confirm movement" to finalize.</p>
 
       </div>
     </div>

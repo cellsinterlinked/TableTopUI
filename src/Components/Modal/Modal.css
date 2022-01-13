@@ -6,7 +6,7 @@
   top: 10vh;
   left: 5%;
   width: 90%;
-  background-color: #000000d3;
+  background-color: #222222;
   /* box-shadow:
   -2px -2px 1px 0 rgb(87, 86, 86),
   2px 2px 4px 0 rgb(0, 0, 0); */
@@ -14,6 +14,7 @@
   font-family: gilSans;
   color: rgb(58, 58, 58);
   border: 1px solid grey;
+  border-radius: 8px;
 }
 
 .modalFooter {
@@ -35,6 +36,7 @@
   margin-top: 1rem;
   border: 1px solid grey;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .modalFooter button:hover {
@@ -60,7 +62,8 @@
 .modalHeader h2 {
   text-align: center;
   letter-spacing: 1.5px;
-  color: rgb(175, 175, 175);
+  color: rgb(235, 235, 235);
+  font-size: 1rem;
 }
 
 .modalContent {

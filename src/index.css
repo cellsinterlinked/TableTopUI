@@ -28,3 +28,25 @@
   opacity: 0;
   transition: all 200ms;
 }
+
+.ok-error-button {
+  background-color: rgba(56, 56, 56, 0.644);
+  height: 2.5rem;
+  border: 1px solid rgb(167, 167, 167);
+  padding-top: 6px;
+  margin-bottom: 1rem;
+  color: rgb(224, 224, 224);
+  font-size: 0.9rem;
+  outline: none;
+  width: 10rem;
+  font-family: gilSans;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ok-error-button:hover {
+  background-color: black;
+  border: 1px solid rgb(11, 128, 0);
+  transition: 0.5s ease-in, 0.5s ease-out;
+}

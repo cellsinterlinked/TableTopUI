@@ -167,6 +167,7 @@ const SideBar = (
     {(chatDrawerOpen || mapDrawerOpen || postDrawerOpen || diceDrawerOpen || npcDrawerOpen || characterDrawerOpen) && <Backdrop onClick={closeAllHandler} />}
     <SideDrawer show={chatDrawerOpen}>
       <Messaging 
+        partyData={partyData}
         setMessage={setMessage} 
         sendPlayerMessage={sendPlayerMessage} 
         message={message} 
@@ -216,7 +217,7 @@ const SideBar = (
       partyRolls={partyRolls}
       />}
 
-      {role === "PLAYER" && <PlayerCombat 
+      {role === "PLAYER" && partyData[name] && partyData[name].text.portrait !== "" &&  <PlayerCombat 
       setUserYPosition={setUserYPosition} 
       setUserXPosition={setUserXPosition} 
       userXPosition={userXPosition} 
@@ -238,6 +239,8 @@ const SideBar = (
       partyRolls={partyRolls}
       sendPlayerRoll={sendPlayerRoll}
       />}
+
+     
     
     </MapDrawer>
 
@@ -277,10 +280,10 @@ const SideBar = (
         <div className="nav-explanation">MAPS</div>
       </div>
 
-      <div className="sideBar-button" onClick={openCombatDrawerHandler}>
+      {stats.portrait && <div className="sideBar-button" onClick={openCombatDrawerHandler}>
         <GiAxeSword className={combatDrawerOpen ? "side-icon purple": "side-icon"}/>
         <div className="nav-explanation">COMBAT</div>
-      </div>
+      </div>}
 
       <div className="sideBar-button" onClick={openNPCDrawerHandler}>
         <BsFillPersonLinesFill className={npcDrawerOpen ? "side-icon purple": "side-icon"}/>

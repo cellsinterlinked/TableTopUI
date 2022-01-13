@@ -1,4 +1,5 @@
 .joinOuterContainer {
+  position: relative;
   display: flex;
   justify-content: center;
 
@@ -27,7 +28,14 @@
   margin: auto;
   width: 28rem;
   height: 30rem;
-  background-color: rgba(255, 255, 255, 0.52);
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
 }
 
 .heading {
@@ -36,6 +44,7 @@
   text-align: center;
   color: rgb(67, 67, 67);
   font-family: gilSans;
+  letter-spacing: 2px;
 }
 
 .joinInput {
@@ -43,21 +52,22 @@
   width: 19rem;
   outline: none;
   margin: auto;
-  height: 2.9rem;
+  height: 2.8rem;
   /* background-image: url('../Resources/paper2.jpg'); */
-  background-color: rgba(0, 0, 0, 0.714);
+  background-color: rgba(2, 2, 2, 0.822);
   /* background-size: cover; */
   font-family: gilSans;
   color: rgb(232, 232, 232);
   font-size: 1.1rem;
   transition: 0.3s ease-in, 0.3s ease-out;
-  border: 2px solid rgb(165, 165, 165);
+  border: 1px solid rgb(160, 160, 160);
   padding-left: 1rem;
   margin-top: 0;
+  border-radius: 8px;
 }
 
 .joinInput:focus {
-  border: 2px solid rgb(29, 123, 29);
+  background-color: grey;
 }
 
 .joinInputBox {
@@ -71,9 +81,9 @@
 
 .signInButton {
   margin: auto;
-  /* margin-top: 3rem; */
   width: 8rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
   height: 2.2rem;
   display: flex;
   text-align: center;
@@ -84,13 +94,13 @@
   align-items: center;
   letter-spacing: 1px;
   font-family: gilSans;
-  /* background-image: url('../Resources/paper2.jpg'); */
-  background-color: rgba(0, 0, 0, 0.639);
-  border: 1px solid rgb(196, 196, 196);
+  background-color: rgba(2, 2, 2, 0.822);
+  border: 1px solid rgb(98, 98, 98);
   color: white;
   padding-top: 6px;
   transition: 0.3s ease-in, 0.3s ease-out;
-  /* align-self: flex-end; */
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .button-link-box {
@@ -100,9 +110,34 @@
 }
 
 .signInButton:hover {
-  background-color: rgba(0, 0, 0, 0.858);
-  border: 2px solid rgb(29, 123, 29);
+  background-color: grey;
+  /* color: black; */
   transition: 0.3s ease-in, 0.3s ease-out;
+  border: 1px solid grey;
+}
+
+.signInButton_Inactive {
+  margin: auto;
+  width: 8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  height: 2.2rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  align-items: center;
+  letter-spacing: 1px;
+  font-family: gilSans;
+  background-color: rgba(2, 2, 2, 0.157);
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.335);
+  padding-top: 6px;
+  transition: 0.3s ease-in, 0.3s ease-out;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .new-resolution-box {
@@ -120,4 +155,20 @@
   color: white;
   height: 3rem;
   width: auto;
+}
+
+.playerInstructions {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-family: gilSans;
+  color: rgb(73, 73, 73);
+  font-size: 0.8rem;
+}
+
+.dmInstructions {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-family: gilSans;
+  color: rgb(73, 73, 73);
+  font-size: 0.8rem;
 }

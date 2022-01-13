@@ -47,16 +47,18 @@ const Post = (props) => {
   return(
     <div className="postContainer">
       <div className="worldContainer">
-      <p>POST A MAP</p>
+      <h1>POST A MAP</h1>
       <input id="mapInput" placeholder="Map URL" className="mapInput" type="text" value={tempWorld} onChange={(event) => setTempWorld(event.target.value)}></input>
+      <p className="postDescription">Right click any image from the web and click "copy image location", then paste the link above. Once submitted this will be the current world map for your adventure and will be displayed in the "Maps" tab </p>
       <div className="worldButtonContainer"><button className="worldSubmitButton" onClick={newMapHandler}>SET MAP</button></div>
       {tempWorld && <div className="mapPrev"><img src={tempWorld} alt="" /></div>}
       </div>
 
       <div className="portraitContainer">
-        <p>POST AN NPC</p>
+        <h1>POST AN NPC</h1>
         <input id="portrait-input" placeholder="Portrait URL" className="portraitInput" type="text" value={tempChar.portrait} onChange={(event) => setTempChar({...tempChar, portrait: event.target.value})}></input>
         <input id="npc-name-input" placeholder="Name" className="portraitInput" type="text" value={tempChar.name} onChange={(event) => setTempChar({...tempChar, name:event.target.value})}></input>
+        <p className="postDescription">Right click any image from the web and click "copy image location", then paste the link above. This will be the current portrait for your new NPC. Second, give them a name. Once submitted you will find your NPC under the "NPC" tab. </p>
         <div className="portraitButtonContainer"><button className="portraitSubmitButton" onClick={newNPCHandler}>CREATE NPC</button></div>
         {/* <div className="portraitButtonContainer"><button className="portraitSubmitButton" onClick={checkState}>Check state</button></div> */}
         {tempChar && <div className="portraitPreview"><img src={tempChar.portrait} alt="" /></div>}
@@ -65,8 +67,9 @@ const Post = (props) => {
       </div>
 
       <div className="battle-map-post-container">
-        <p>POST A COMBAT MAP</p>
+        <h1>POST A COMBAT MAP</h1>
         <input id="battle-map-input" placeholder="Battle Map URL" className="mapInput" type="text" value={tempCombatMap} onChange={(event) => setTempCombatMap(event.target.value)}></input>
+        <p className="postDescription">Right click any image from the web and click "copy image location", then paste the link above. This will be the current combat map for your adventure and will be displayed in the "Combat" tab </p>
         <div className="worldButtonContainer"><button className="worldSubmitButton" onClick={newCombatHandler}>SET COMBAT MAP</button></div>
         {tempCombatMap && <div className="mapPrev"><img src={tempCombatMap} alt="URL Not Valid"/></div>}
 

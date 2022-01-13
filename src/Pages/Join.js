@@ -67,13 +67,21 @@ const Join = () => {
 
        <div className='joinInnerContainer'>
         <h1 className="heading">JOIN THE ADVENTURE</h1>
-        <div className="joinInputBox"><input placeholder="Name" className="joinInput" type="text" value={name} onChange={(event) => setName(event.target.value)}></input></div>
-        <div className="joinInputBox"><input placeholder="Room" className="joinInput" type="text" value={room} onChange={(event) => setRoom(event.target.value)}></input></div>
+        <div className="joinInputBox"><input placeholder="Character Name..." className="joinInput" type="text" value={name} onChange={(event) => setName(event.target.value)}></input></div>
+        <div className="joinInputBox"><input placeholder="Room..." className="joinInput" type="text" value={room} onChange={(event) => setRoom(event.target.value)}></input></div>
         <FrontDropdown items={items} title={playerType[0].value} headingStyle="frontPage spaceTop" setSingleState={setPlayerType} singleState={playerType}/>
-        <Link className="button-link-box"style={{textDecoration: "none", fontFamily: "'Niconne', cursive"}} onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/play?name=${name}&room=${room}&role=${playerType[0].value}`}>
+
+        <p className="dmInstructions">If you are in the Dungeon Master role please choose a name for your room, the name your players will see you as and set the role to "DM"</p>
+        <p className="playerInstructions">If you are in the Player role please give your character name, the name of the room your Dungeon Master chose, and make sure "Player" role is selected. </p>
+        {name && room && <Link className="button-link-box"style={{textDecoration: "none", fontFamily: "'Niconne', cursive"}} onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/play?name=${name}&room=${room}&role=${playerType[0].value}`}>
           <button className="signInButton" type="submit">JOIN PARTY</button>
-        </Link>
-        {/* <button onClick={showState}>Herrooo</button> */}
+        </Link>}
+
+        {(!name || !room) && 
+        
+          <button className="signInButton_Inactive" type="button" onClick={() => {alert("Please input a character name and room to join")}}>JOIN PARTY</button>
+        }
+       
       </div>
     </div>}
 </>

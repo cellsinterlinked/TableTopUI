@@ -7,11 +7,12 @@ import SideBar from '../Components/Navigation/SideBar';
 import Modal from '../Components/Modal/Modal';
 import ErrorModal from '../Components/Modal/ErrorModal';
 import NotificationModal from '../Components/Modal/NotificationModal';
-import Help from '../Components/Modal/Help';
+import Help from '../Components/Modal/Help/Help';
 import {Howl, Howler} from 'howler';
 import NotificationSound from '../Resources/juntos-607.mp3';
 import NewPlayerSound from '../Resources/attention-seeker-480.mp3';
 import Exit from '../Components/Navigation/Exit';
+import Background from '../Resources/AdobeStock_225549528.jpeg';
 
 
 let socket;
@@ -68,10 +69,12 @@ const Play
     {sound: NotificationSound, label: "notification"},
     {sound: NewPlayerSound, label: "newPlayer"}
   ]
+
+  const [topic, setTopic] = useState("Posting Character Stats")
   
 
   const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
-  //local host 5000 for development 
+  // const ENDPOINT = 'http://localhost:5000'
 
   
   
@@ -86,7 +89,7 @@ const Play
     setRoom(room);
 
     if (role === 'PLAYER') {setStats({...stats, user: name})}
-    if (role === 'DM') (setStats({...stats, user: name, portrait: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F16%2F4d%2F2c%2F164d2cfae48dad42f5928f2eb3d87e13.jpg&f=1&nofb=1"}))
+    if (role === 'DM') (setStats({...stats, user: name, portrait: "https://res.cloudinary.com/dbnapmpvm/image/upload/v1641933882/Dungeons%20and%20Dragons/AdobeStock_337670650_copy_qjmtlr.jpg"}))
     setRecipients([...recipients, name.toLowerCase()])
     //the set recipients here makes it so that the sender is always able to view his own messages, and doesn't have to click his own name checkbox in messages
     
@@ -183,6 +186,7 @@ const Play
   useEffect(() => {
     socket.on('sendNPCNote', (name, note) => {
       let newNPCArr = npcNotes[name]
+      console.log(newNPCArr, "this is the new npc arr", note, "this is the note")
       let newNotes = npcNotes
       newNPCArr.push(note)
       setNPCNotes({...newNotes, [name]:[...newNPCArr]})
@@ -311,6 +315,13 @@ useEffect(() => {
         console.log(number)
       }
     }
+
+    // const sendPlayerRoll = (number) => {
+    //   if(number) {
+    //     socket.emit('sendPlayerRoll', number)
+    //     console.log(number)
+    //   }
+    // }
     
   
     const sendMapData = (map) => {
@@ -467,7 +478,13 @@ useEffect(() => {
   const displayTest = () => {
     console.log(partyData, users)
   }
+
   
+  
+  const helpTopicHandler = (t) => {
+    setTopic(t)
+
+  }
   
   
   
@@ -477,9 +494,9 @@ useEffect(() => {
       <ErrorModal error={error} onClear={clearError} modalStyle="skinny-modal" />
     <Modal 
       show={showModal === true} 
-      children={<Help />}
+      children={<Help helpTopicHandler={helpTopicHandler}/>}
       onCancel={closeModal}
-      header={<p>SELECT A TOPIC FOR EXPLANATION</p>}
+      header={<p>{topic}</p>}
       />
     <Modal 
       modalStyle="skinny-modal"
@@ -492,6 +509,10 @@ useEffect(() => {
       show={notificationModal === true}
       header={<p>{alert}</p>}
     />
+    <div className="background_cover">
+    <img src={Background} alt="failed to load" />
+    </div>
+
       {!error && <SideBar 
       sendMonsterInfo={sendMonsterInfo}
       monsterData={monsterData}

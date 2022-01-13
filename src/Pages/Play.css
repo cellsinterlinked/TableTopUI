@@ -1,18 +1,41 @@
 .outerContainer {
   width: 100vw;
   height: 100vh;
-  background-image: url(../Resources/AdobeStock_225549528.jpeg);
+  /* background-image: url(../Resources/AdobeStock_225549528.jpeg); */
   background-size: cover;
-  background-repeat: repeat-y;
-  padding-top: 1rem;
+  /* background-repeat: repeat-y; */
+  /* padding-top: 1rem; */
+}
+
+.background_cover {
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: asolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+}
+
+.background_cover img {
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 200%;
+  object-fit: cover;
 }
 
 .playersContainer {
+  position: absolute;
+  top: 3rem;
+  left: 1rem;
+  z-index: 4;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 96%;
+  width: 96vw;
   margin-left: 1%;
   margin-right: 3%;
   margin-top: 2rem;

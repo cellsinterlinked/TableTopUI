@@ -32,9 +32,31 @@ const Character = ({partyRolls, partyData, name, individualRole}) => {
 
   
 const newName = () => {
-  const caps = name.charAt(0).toUpperCase() + name.slice(1);
-  return caps;
+  let arr = name.split(" ")
+  let newArr = []
+  for (let i=0; i<arr.length; i++){
+    newArr.push (arr[i].charAt(0).toUpperCase() + arr[i].slice(1));
+  }
+  return newArr.join(" ");
   
+}
+
+console.log(individualRole, "this is individual role")
+
+const totalFunc = () => {
+  if (individualRole === undefined || individualRole.number.length < 1) {
+    return 0;
+  }
+  if (individualRole.number.length > 0) {
+    let total = 0
+   for (let i = 0; i < individualRole.number.length; i++) {
+     total = total + individualRole.number[i]
+   }
+    return total;
+  } else {
+    return 0;
+  }
+
 }
 
 
@@ -58,7 +80,7 @@ const newName = () => {
     {playerStats &&  <div className='char-Container'>
       {/* <button onClick={() => console.log(playerStats)}>CharacterInfo</button> */}
       <div className="player-container-1">
-        <div className="i-hate-you">
+        <div className="player-front-portrait">
           <img alt="" src={partyData[name].text.portrait}></img>
         </div>
         <h1>{correctName}</h1>
@@ -91,10 +113,12 @@ const newName = () => {
         <div className='player-dice-display'>
           <h1 className="player-display-roll-text">Recent Dice Roll</h1>
           {!isLoading && <div className='player-dice-box'>
-             {individualRole === undefined ? <p>0</p> : <p>{individualRole.number}</p>}
+
+             {individualRole && individualRole.number.length > 0 && individualRole.number.map((number, index) => <div className="char-roll-circle"><p>{number}</p></div>)}
             {/* <button onClick={() => console.log(playerRoll.number)}>Click</button> */}
           </div>}
           {isLoading && <DiceLoad/>}
+          {!isLoading && individualRole && individualRole.number.length > 0 && <div className="charDice-totals"><h2 className="charDice-heading">TOTAL</h2><div className="char-roll-circle"><h2 style={{fontSize: "1rem", marginTop: "19px"}}>{totalFunc()}</h2></div></div>}
         </div>
 
       

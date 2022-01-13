@@ -106,7 +106,7 @@
   /* display: block; */
   display: flex;
   flex-direction: row;
-
+  justify-content: space-between;
   color: rgb(243, 243, 243);
   /* background-color: rgba(0, 0, 0, 0.472); */
   /* margin-top: 8px; */
@@ -139,7 +139,8 @@
   width: 1rem;
 }
 
-.recipient-check-box {
+/* .recipient-check-box {
+
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 0.5rem;
@@ -147,6 +148,37 @@
 
 .recipient-check-box:checked {
   background-color: green;
+} */
+
+.recipient-check-box {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin: 0;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  margin-left: 1rem;
+  display: grid;
+  place-content: center;
+}
+
+.recipient-check-box::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em green;
+}
+
+.recipient-check-box:checked::before {
+  transform: scale(01);
 }
 
 .recipient-name-list {
@@ -168,4 +200,29 @@
 
 .rotated {
   transform: rotate(180deg);
+}
+
+.checklist-portrait {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.checklist-portrait img {
+  object-fit: cover;
+  max-height: 120%;
+  max-width: 130%;
+  min-height: 100%;
+  min-width: 100%;
+  border-radius: 50%;
+}
+
+.check-name-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

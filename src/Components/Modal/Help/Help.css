@@ -1,0 +1,156 @@
+.help-container {
+  width: 100%;
+  position: relative;
+  height: 35rem;
+  overflow: hidden;
+  padding-bottom: 3.5rem;
+}
+
+.help-footer {
+  position: absolute;
+  background-color: rgb(75, 75, 75);
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  flex-direction: row;
+  bottom: 0rem;
+  left: 0;
+  right: 0;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.help-footer p {
+  font-size: 0.8rem;
+  font-family: gilSans;
+  color: white;
+  transition: 0.3s ease-in 0.3s ease-out;
+}
+
+.help-footer p:hover {
+  color: rgb(50, 194, 50);
+  cursor: pointer;
+}
+
+.help-image {
+  height: auto;
+  width: 60%;
+}
+.character-help-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.helpImage_wrapperS {
+  position: relative;
+  overflow: hidden;
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helpImage_wrapperS img {
+  object-fit: cover;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 130%;
+  max-height: 130%;
+}
+
+.help-text-tutorial {
+  font-size: 0.9rem;
+  color: rgb(209, 209, 209);
+  font-family: gilSans;
+  margin: 1rem;
+  text-align: center;
+}
+
+.help-topic-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next_arrow {
+  margin: 1rem;
+  height: 2rem;
+  width: auto;
+  color: white;
+}
+
+.nav-icon-tutorial-wrapper {
+  height: 100%;
+  width: 55rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icon-tutorial-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 10rem;
+  margin: 0.5rem;
+  height: 17rem;
+}
+
+.icon-tutorial-image-wrapper {
+  position: relative;
+  display: flex;
+  height: 3.5rem;
+  width: 9rem;
+  overflow: hidden;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icon-tutorial-image-wrapper img {
+  object-fit: cover;
+  max-width: 120%;
+  max-height: 120%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.icon-tutorial-box p {
+  font-size: 0.8rem;
+  margin: 0.5rem;
+  font-family: gilSans;
+  color: rgb(209, 209, 209);
+  text-align: center;
+}
+
+.help-highlight {
+  border: 2px solid white;
+  background: transparent;
+  position: absolute;
+  animation: glow 1800ms ease-out infinite alternate;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+  /* 0 2px 0 #000; */
+}
+
+@keyframes glow {
+  0% {
+    border-color: rgba(117, 117, 117, 0);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
+      inset 0 0 5px rgba(255, 255, 255, 0.1);
+    /* 0 2px 0 #000; */
+  }
+  100% {
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+      inset 0 0 10px rgba(255, 255, 255, 0.4);
+    /* 0 2px 0 #000; */
+  }
+}

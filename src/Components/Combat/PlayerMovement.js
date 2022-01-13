@@ -11,7 +11,10 @@ const PlayerMovement = ({endTurn, stats, partyPosition, setPlayerSize, playerSiz
       
       <div className="monster-list-container">
        <PlayerListItem stats={stats} setPlayerSize={setPlayerSize} playerSize={playerSize} partyData={partyData} name={name}/>
+       <div className="combatButton_container" style={{backgroundColor: "rgba(0, 0, 0, 0.733)", marginTop: "0px"}}>
         <button onClick={endTurn} className="minions-button">CONFIRM MOVEMENT</button>
+
+       </div>
         {/* <button onClick={() => {console.log(partyPosition)}} className="minions-button">Party Position</button> */}
       </div>
       <div className="black-background">

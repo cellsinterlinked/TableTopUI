@@ -47,6 +47,7 @@ function Dropdown({ title, items, multiSelect = false, headingStyle, setSingleSt
         role="button"
         onKeyPress={() => toggle(!open)}
         onClick={() => toggle(!open)}
+        style={{borderRadius: "8px" ,border: "1px solid rgb(160,160,160)" }}
       >
         <div className='front-drop-header__title'>
           <p className="front-drop-header__title--bold">{title}</p>
@@ -60,8 +61,8 @@ function Dropdown({ title, items, multiSelect = false, headingStyle, setSingleSt
         <ul className="front-drop-list">
           {items.map(item => (
             <li className="drop-list-item" key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
-                <span>{item.value}</span>
+              <button type="button" onClick={() => handleOnClick(item)} style={{backgroundColor: isItemInSelection(item) ? "grey" : "rgba(2, 2, 2, 0.822", color: "white"}} >
+                <span >{item.value}</span>
                 <span>{isItemInSelection(item) && 'Selected'}</span>
               </button>
             </li>

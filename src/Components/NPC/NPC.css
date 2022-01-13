@@ -7,9 +7,11 @@
   height: 41.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 3rem;
   background-color: rgba(23, 23, 23, 0.81);
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 12px black;
 }
 
 .npc-image {
@@ -63,22 +65,23 @@
 }
 
 .npc-card button {
+  background-color: rgba(56, 56, 56, 0.644);
+  height: 2.5rem;
+  border: 1px solid rgb(167, 167, 167);
+  padding-top: 6px;
   margin-bottom: 1rem;
-  padding-top: 5px;
-  width: 10rem;
-  height: 2rem;
-  border: none;
+  color: rgb(224, 224, 224);
+  font-size: 0.9rem;
   outline: none;
-  background-color: transparent;
-  color: rgb(211, 211, 211);
-  border: 2px solid rgb(114, 114, 114);
+  width: 70%;
   font-family: gilSans;
   letter-spacing: 1px;
+  border-radius: 8px;
 }
 
 .npc-card button:hover {
   background-color: black;
-  border: 2px solid rgb(11, 128, 0);
+  border: 1px solid rgb(11, 128, 0);
   transition: 0.5s ease-in, 0.5s ease-out;
 }
 
@@ -92,6 +95,8 @@
   font-family: gilSans;
   color: rgb(0, 0, 0);
   font-size: 1.1rem;
+  border-radius: 8px;
+  padding: 5px;
 }
 
 .notes-header {
@@ -101,6 +106,7 @@
   margin-top: 1rem;
   font-family: gilSans;
   letter-spacing: 1px;
+  font-size: 1.3rem;
 }
 
 .npc-notes-input-container {
