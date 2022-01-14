@@ -66,7 +66,9 @@ const SideBar = (
     combatMap,
     showNotification,
     partyData,
-    partyRolls
+    partyRolls,
+    stupidHack,
+    notes
   }
     ) => {
 
@@ -191,7 +193,7 @@ const SideBar = (
     </PostDrawer>
     
     <MapDrawer show={npcDrawerOpen}>
-      <NPCDisplay npcArray={npcArray} deleteNPCData={deleteNPCData} sendNPCNote={sendNPCNote} notePost={notePost} setNotePost={setNotePost} npcNotes={npcNotes} role={role}/>
+      <NPCDisplay npcArray={npcArray} deleteNPCData={deleteNPCData} sendNPCNote={sendNPCNote} notePost={notePost} setNotePost={setNotePost} npcNotes={npcNotes} role={role} stupidHack={stupidHack} notes={notes}/>
     </MapDrawer>
 
     <MapDrawer show={combatDrawerOpen}>

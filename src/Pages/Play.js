@@ -48,7 +48,7 @@ const Play
   })
 
   const [map, setMap] = useState(sessionStorage.getItem('map') ? JSON.parse(sessionStorage.getItem('map')) : "")
-  const [npcNotes, setNPCNotes] = useState(sessionStorage.getItem('npcNotes') ? JSON.parse(sessionStorage.getItem('npcNotes')):{})
+  // const [npcNotes, setNPCNotes] = useState(sessionStorage.getItem('npcNotes') ? JSON.parse(sessionStorage.getItem('npcNotes')):{})
   const [recipients, setRecipients] = useState([])
   const [npcArray, setNPCArray] = useState(sessionStorage.getItem('npcArray') ? JSON.parse(sessionStorage.getItem('npcArray')) : []);
   const [notePost, setNotePost] = useState("")
@@ -64,7 +64,7 @@ const Play
   const [monsterData, setMonsterData] = useState(sessionStorage.getItem('monsterData') ? JSON.parse(sessionStorage.getItem('monsterData')) : null)
 
   const [combatMap, setCombatMap] = useState(sessionStorage.getItem('combatMap') ? JSON.parse(sessionStorage.getItem('combatMap')) : "")
-
+  const [stupidHack, setStupidHack] = useState(false)
   const audioClips = [
     {sound: NotificationSound, label: "notification"},
     {sound: NewPlayerSound, label: "newPlayer"}
@@ -72,9 +72,10 @@ const Play
 
   const [topic, setTopic] = useState("Posting Character Stats")
   
+  const [notes, setNotes] = useState(sessionStorage.getItem('notes') ? JSON.parse(sessionStorage.getItem('notes')) : [])
 
-  const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
-  // const ENDPOINT = 'http://localhost:5000'
+  // const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
+  const ENDPOINT = 'http://localhost:5000'
 
   
   
@@ -154,28 +155,26 @@ const Play
       })
     }, [map])
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
   
     useEffect(() => {
       socket.on('npc', (npc) => {
         setNPCArray([...npcArray, npc])
-        setNPCNotes({...npcNotes, [npc.name]:[]})
-        setUnseenNPC(unseenNPC + 1)
+
+        // setUnseenNPC(unseenNPC + 1)
       })
       socket.on('roomData', ({ users }) => {
         setUsers(users);
       })
-    }, [npcArray, npcNotes])
+    }, [npcArray])
 
   
 
-
     useEffect(() => {
+   
       socket.on('deleteNPC', (deletedNPC) => {
-        setNPCArray((prevNPCArray) => prevNPCArray.filter((nonPlayer) => nonPlayer.name !== deletedNPC.name))
-        let newNPCNotes = {...npcNotes}
-        delete newNPCNotes[deletedNPC.name]
-        setNPCNotes({...newNPCNotes})
+        setNPCArray(npcArray.filter((nonPlayer) => nonPlayer.name !== deletedNPC.name))
       })
       socket.on('roomData', ({ users }) => {
         setUsers(users);
@@ -183,20 +182,26 @@ const Play
   }, [npcArray])
 
 
+
   useEffect(() => {
-    socket.on('sendNPCNote', (name, note) => {
-      let newNPCArr = npcNotes[name]
-      console.log(newNPCArr, "this is the new npc arr", note, "this is the note")
-      let newNotes = npcNotes
-      newNPCArr.push(note)
-      setNPCNotes({...newNotes, [name]:[...newNPCArr]})
-      setNotePost("")
+
+    socket.on('noteTransfer', (payload) => {
+      console.log("note came in")
+      setNotes([...notes, payload ])
+      // let myNPCIndex = npcArray.findIndex(npc => npc.name === payload.name)
+      // console.log(myNPCIndex)
+      // let arrCopy = npcArray;
+      // arrCopy[myNPCIndex].notes.push(payload.note)
+      // console.log(arrCopy)
+      // setNPCArray(arrCopy)
+      // setStupidHack(!stupidHack)
     })
     socket.on('roomData', ({ users }) => {
       setUsers(users);
   })
-},[npcNotes])
-      
+},[npcArray])
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -291,13 +296,15 @@ useEffect(() => {
       window.sessionStorage.setItem('partyStats', JSON.stringify(partyData))
       window.sessionStorage.setItem("map", JSON.stringify(map) )
       window.sessionStorage.setItem("npcArray", JSON.stringify(npcArray))
-      window.sessionStorage.setItem("npcNotes", JSON.stringify(npcNotes))
+      // window.sessionStorage.setItem("npcNotes", JSON.stringify(npcNotes))
       window.sessionStorage.setItem('messages', JSON.stringify(messages))
       window.sessionStorage.setItem('partyPosition', JSON.stringify(partyPosition))
       window.sessionStorage.setItem('users', JSON.stringify(users))
       window.sessionStorage.setItem('monsterData', JSON.stringify(monsterData))
       window.sessionStorage.setItem('combatMap', JSON.stringify(combatMap))
-    }, [stats, partyData, map, npcArray, npcNotes, messages, partyPosition, users, monsterData, combatMap]);
+      window.sessionStorage.setItem('notes', JSON.stringify(notes))
+    }, [stats, partyData, map, npcArray, messages, partyPosition, users, monsterData, combatMap, stupidHack, notes]);
+    /// removed npc notes
 
 
 
@@ -349,13 +356,14 @@ useEffect(() => {
       console.log({npc})
     }
 
-    //possibly failing since sending note into function instead of event and note being a state in the play component
-    const sendNPCNote = (name) => {
-      if(name && notePost) {
-        let note = notePost
-        socket.emit('sendNPCNote', name, note)
-      }
-      console.log('sendNPCNote fired')
+    const sendNPCNote = (npcName) => {
+        console.log(`sending ${notePost} ${npcName}`)
+        let icon = stats.portrait;
+        let myName = name
+        socket.emit('sendNPCNote', npcName, notePost, icon, myName)
+        setNotePost("")
+        
+      
     }
 
 
@@ -514,6 +522,8 @@ useEffect(() => {
     </div>
 
       {!error && <SideBar 
+      notes={notes}
+      stupidHack={stupidHack}
       sendMonsterInfo={sendMonsterInfo}
       monsterData={monsterData}
       setRecipients={setRecipients}
@@ -550,7 +560,7 @@ useEffect(() => {
       partyPosition={partyPosition}
       notePost={notePost}
       setNotePost={setNotePost}
-      npcNotes={npcNotes}
+      // npcNotes={npcNotes}
       showSomething={showSomething}
       showModal={showModal}
       role={role}
