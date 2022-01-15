@@ -24,7 +24,7 @@ const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes,
   }
 
   const noteHandler = async() => {
-     if (notePost !== "") {
+     if (notePost !== "") {  
      sendNPCNote(item.name)
     }
     document.getElementById("noteInput").value = ""
