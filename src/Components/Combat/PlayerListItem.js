@@ -17,7 +17,7 @@ const PlayerListItem = ({stats, setPlayerSize, playerSize, partyData, name}) => 
               <div className={playerSize === 'medium' ? 'player-size-button highlighted' : 'player-size-button'} onClick={() => setPlayerSize('medium')}>M</div>
               <div className={playerSize === 'large' ? 'player-size-button highlighted' : 'player-size-button'} onClick={() => setPlayerSize('large')}>L</div>
           </div>
-          <p className="playerMove-instructions">Select a size for your character miniature that fits the battle map grid.Then click on where you want to move on the map. Click "confirm movement" to finalize.</p>
+          <p className="playerMove-instructions">Select a size for your character miniature that fits the battle map grid.Then drag and drop your character icon to wherever you would like on the map. Click "confirm movement" to finalize.</p>
 
       </div>
     </div>

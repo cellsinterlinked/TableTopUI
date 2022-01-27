@@ -278,10 +278,8 @@ const MonsterCreator = ({
       {monsterData && (
         <div className="dmCombat_instructions">
           <p>
-            To move a creature first click "select" next to their icon below.
-            Then click where you want them to move on the map. The Icon will
-            follow your mouse click. When you are done with your movement phase
-            click the "Confirm Movement" button below to finalize.
+            To move a monster just drag and drop it to a place within the battle map. When you are done with your movement phase
+            click the "Confirm Movement" button below to finalize. This will make all monster positions available to the players.
           </p>
           <p>
             If a creature is destroyed click the red X box next to its
