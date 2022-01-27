@@ -80,13 +80,13 @@ const Play = ({ location }) => {
   const [partyPosition, setPartyPosition] = useState(
     sessionStorage.getItem('partyPosition')
       ? JSON.parse(sessionStorage.getItem('partyPosition'))
-      : {}
+      : []
   );
   const [error, setError] = useState(null);
   const [monsterData, setMonsterData] = useState(
     sessionStorage.getItem('monsterData')
       ? JSON.parse(sessionStorage.getItem('monsterData'))
-      : null
+      : []
   );
 
   const [combatMap, setCombatMap] = useState(
@@ -108,8 +108,8 @@ const Play = ({ location }) => {
       : []
   );
 
-  const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
-  // const ENDPOINT = 'http://localhost:5000';
+  // const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
+  const ENDPOINT = 'http://localhost:5000';
 
   useEffect(() => {
     const { name, room, role } = queryString.parse(location.search);
@@ -223,13 +223,14 @@ const Play = ({ location }) => {
 
   useEffect(() => {
     socket.on('sendPlayerPosition', (sendPlayerPosition) => {
-      setPartyPosition({
-        ...partyPosition,
-        [sendPlayerPosition.name]: {
+      let newArr = partyPosition.filter(player => player.name !== sendPlayerPosition.name)
+      setPartyPosition([
+        ...newArr,
+        {name:sendPlayerPosition.name, 
           position: sendPlayerPosition.position,
           icon: sendPlayerPosition.icon,
         },
-      });
+      ]);
     });
     socket.on('roomData', ({ users }) => {
       setUsers(users);
@@ -383,12 +384,12 @@ const Play = ({ location }) => {
   };
 
   const sendPlayerPosition = (position) => {
-    if (userXPosition !== 0 && userYPosition !== 0 && stats.portrait) {
+    // if (userXPosition !== 0 && userYPosition !== 0 && stats.portrait) {
       let icon = stats.portrait;
       socket.emit('sendPlayerPosition', position, name, icon);
       showNotification('Movement Logged');
       console.log('triggered send player position');
-    }
+    // }
   };
 
   const sendMonsterInfo = (monsterGroup) => {
@@ -398,14 +399,14 @@ const Play = ({ location }) => {
   };
 
   const clearMonsterInfo = () => {
-    let clearValue = null;
+    let clearValue = [];
     socket.emit('clearMonsterInfo', clearValue);
     showNotification('Monsters Cleared');
-    console.log('clear monster info triggered');
+   
   };
 
   const clearPlayerPosition = () => {
-    let clearValue = {};
+    let clearValue = [];
     socket.emit('clearPlayerPosition', clearValue);
     showNotification('Players Cleared From Combat');
   };

@@ -73,3 +73,18 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.774);
 }
+
+.no-npcs-wrapper {
+  text-align: center;
+  width: 20rem;
+  height: 40rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.774);
+  color: white;
+  font-family: gilSans;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
+  font-size: 1.1rem;
+}

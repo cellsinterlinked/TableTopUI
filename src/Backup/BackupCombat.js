@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { GiConsoleController } from 'react-icons/gi';
 import './Combat.css';
 import MonsterCreator from './MonsterCreator';
 import { GiPieceSkull } from 'react-icons/gi';
+import PlayerMovement from './PlayerMovement';
 import PlayerInitiative from './PlayerInitiative';
 import Draggable from 'react-draggable';
 
@@ -20,11 +22,11 @@ const Combat = ({
   showNotification,
 }) => {
   const [newMonsterData, setNewMonsterData] = useState(
-    monsterData ? [...monsterData] : []
+    monsterData ? [...monsterData] : null
   );
 
   const [newPartyPosition, setNewPartyPosition] = useState(
-    partyPosition ? [...partyPosition] : []
+    partyPosition ? [...partyPosition] : null
   );
   const [activeMonster, setActiveMonster] = useState();
 
@@ -32,7 +34,7 @@ const Combat = ({
     if (monsterData) {
       setNewMonsterData([...monsterData]);
     } else {
-      setNewMonsterData([]);
+      setNewMonsterData();
     }
   }, [monsterData]);
 
@@ -40,7 +42,7 @@ const Combat = ({
     if (partyPosition) {
       setNewPartyPosition([...partyPosition]);
     } else {
-      setNewPartyPosition([]);
+      setNewPartyPosition();
     }
   }, [partyPosition]);
 
@@ -50,8 +52,7 @@ const Combat = ({
     console.log('end monster turn fired');
   };
 
-
-
+  console.log("monster data is " + monsterData, "party position is" + partyPosition)
   return (
     <div className="combat-outer-border">
       <PlayerInitiative
@@ -61,9 +62,37 @@ const Combat = ({
       />
 
       <div id="contentContainer">
-        {newMonsterData &&
-          monsterData &&
-          newMonsterData.sort((a, b) => a.value - b.value).map((monster, index) => (
+        {/* {role && role !== 'DM'  && (
+          <Draggable
+            bounds="parent"
+            defaultClassName="absolute"
+            defaultPosition={{ x: playerLocation.x, y: playerLocation.y }}
+            onDrag={(e, ui) => {
+              const x = playerLocation.x;
+              const y = playerLocation.y;
+
+              let updatedLocation = {
+                ...playerLocation,
+                x: x + ui.deltaX,
+                y: y + ui.deltaY,
+              };
+              setPlayerLocation(updatedLocation);
+            }}
+          >
+            <div
+              className={
+                partyPosition[name]
+                  ? ` drag-wrapper ${partyPosition[name].position.size}`
+                  : ' drag-wrapper small'
+              }
+            >
+              <img alt="" src={stats.portrait}></img>
+            </div>
+          </Draggable>
+        )} */}
+
+        {newMonsterData && monsterData ? 
+          newMonsterData.map((monster, index) => (
             <Draggable
               bounds="parent"
               onDrag={(e, ui) => {
@@ -89,21 +118,18 @@ const Combat = ({
             >
               <div className={`drag-wrapper ${monster.size}`}>
                 {monster.dead === true ? (
-                  <div className="drag-pic-wrapper">
                   <GiPieceSkull className="dead-token" />
-                  </div>
                 ) : (
-                  <div className="drag-pic-wrapper">
                   <img alt="" src={monster.icon}></img>
-                  </div>
                 )}
 
-                <div className="monster-drag-cover">{monster.value}</div>
+                <div className="drag-cover"></div>
               </div>
             </Draggable>
-          ))}
+          )) : null}
 
-        {newPartyPosition.filter((player) => player.name !== name)
+        {Object.keys(newPartyPosition)
+          .filter((player) => player.name !== name)
           .map((user, index) => (
             <div
               className={`${user.position.size} circle`}
@@ -118,15 +144,13 @@ const Combat = ({
                 transition: 'left 0.5s ease-in, top 0.5s ease-in',
               }}
             >
-               <div className="drag-pic-wrapper">
+              {partyData[index] && (
                 <img
                   alt=""
-                  src={user.icon}
+                  src={partyData[user.name].text.portrait}
                   className="youSuck"
                 ></img>
-                </div>
-                <div className="party-drag-cover"></div>
-              
+              )}
             </div>
           ))}
 
@@ -136,6 +160,8 @@ const Combat = ({
       </div>
 
       <MonsterCreator
+      
+       
         sendMonsterInfo={sendMonsterInfo}
         monsterData={monsterData}
         setActiveMonster={setActiveMonster}

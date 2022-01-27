@@ -39,13 +39,15 @@ const NPCDisplay = (props) => {
         <FaChevronLeft className="arrow" />
       </button>
       
-      <div className="npcSpinner">
+      {props.npcArray.length > 0 && <div className="npcSpinner">
         {NPCDisplayState.map((item, index) => (
           <div key={item} className="slidingNPC" style={{ transform: `translateX(${x}%)`}}>
             <NPC role={props.role} item={item} deleteNPCData={props.deleteNPCData} sendNPCNote={props.sendNPCNote} notePost={props.notePost} setNotePost={props.setNotePost} npcNotes={props.npcNotes} stupidHack={props.stupidHack} notes={props.notes.filter(note => note.name === item.name)} />
           </div>  
         ))}
-      </div>
+      </div>}
+
+      {props.npcArray.length === 0 && <div className="no-npcs-wrapper">This is where NPC data will be displayed once your DM provides it. </div>}
 
       <button id="npcRight" onClick={goRight}>
         <FaChevronRight className="arrow" />

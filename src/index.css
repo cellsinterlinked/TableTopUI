@@ -8,6 +8,10 @@
   src: url('./Resources/fonts/Gill\ Sans\ Light.otf');
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .slide-in-right-enter {
   transform: translateX(100%);
 }
