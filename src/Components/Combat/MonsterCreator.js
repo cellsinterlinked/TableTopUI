@@ -7,6 +7,7 @@ import { GiPieceSkull } from 'react-icons/gi';
 import MonsterListItem from './MonsterListItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Modal from '../Modal/Modal';
+import DiceRoll from '../DiceRoll';
 
 const MonsterCreator = ({
   monsterData,
@@ -14,7 +15,7 @@ const MonsterCreator = ({
 
   newMonsterData,
   setNewMonsterData,
-
+  sendPlayerRoll,
   endTurn,
   endMonsterTurn,
   clearMonsterInfo,
@@ -302,7 +303,7 @@ const MonsterCreator = ({
           </button>
         </div>
       )}
-      <DragDropContext onDragEnd={handleOnDragEnd}>
+      {/* <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="monsters">
           {(provided) => (
             <div
@@ -354,7 +355,7 @@ const MonsterCreator = ({
             </div>
           )}
         </Droppable>
-      </DragDropContext>
+      </DragDropContext> */}
       {newMonsterData && (
         <div className="combatButton_container">
           <button onClick={endMonsterTurn} className="minions-button">
@@ -379,6 +380,8 @@ const MonsterCreator = ({
           CLEAR PLAYERS
         </button>
       </div>
+
+      <DiceRoll sendPlayerRoll={sendPlayerRoll}/>
     </div>
   );
 };

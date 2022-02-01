@@ -1,11 +1,13 @@
 .player-initiative-container {
-  min-width: 6rem;
-  width: 6rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background: rgba(0, 0, 0, 0.705);
   font-family: gilSans;
-  height: 100vh;
+  height: 10rem;
   z-index: 100;
 }
 
@@ -15,7 +17,8 @@
   border: 1px solid grey;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 6rem;
+  transition: 'left 0.5s ease-in, top 0.5s ease-in';
 }
 
 .player-initiative-box p {
@@ -26,12 +29,33 @@
 }
 
 .initiative-icon-container {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   height: 9rem;
   width: 100%;
   overflow: hidden;
+}
+
+.dead-vignette {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 9rem;
+  width: 6rem;
+  background-color: rgba(255, 0, 0, 0.376);
+}
+
+.alive-vignette {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 9rem;
+  width: 6rem;
+  background-color: transparent;
 }
 
 .initiative-icon-container img {
@@ -43,6 +67,7 @@
 }
 
 .initiative-dice-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,4 +85,35 @@
 .total-init-container {
   display: flex;
   justify-content: center;
+}
+
+.monster-delete-button {
+  position: absolute;
+  top: auto;
+  bottom: auto;
+  right: 1px;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.kill-icon {
+  color: red;
+  height: 100%;
+  width: 100%;
+}
+
+.kill-icon:hover {
+  color: rgba(0, 0, 0, 0.705);
+}
+
+.non-moving-init-char {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }

@@ -21,6 +21,10 @@ const Combat = ({
   partyRolls,
   partyStats,
   sendPlayerRoll,
+  battleGroup,
+  setBattleGroup,
+  updateBattleGroup,
+  updateKillFeed
 }) => {
   const [newMonsterData, setNewMonsterData] = useState(
     monsterData ? [...monsterData] : []
@@ -78,8 +82,12 @@ const Combat = ({
         partyData={partyData}
         partyRolls={partyRolls}
         users={users}
+        battleGroup={battleGroup}
+        setBattleGroup={setBattleGroup}
+        updateBattleGroup={setBattleGroup}
+        updateKillFeed={updateKillFeed}
       />
-
+      <div className="outer-combat-wrapper">
       <div id="contentContainer">
         {role && role !== 'DM' && playerLocation && (
           <Draggable
@@ -122,6 +130,7 @@ const Combat = ({
             <div className="absolute"   style={{
               left: `${monster.xPosition}px`,
               top: `${monster.yPosition}px`,
+              transition: 'left 0.5s ease-in, top 0.5s ease-in',
             }}>
             <div
               id={monster.id}
@@ -193,6 +202,7 @@ const Combat = ({
         {combatMap && (
           <img className="combat-image" alt="" src={combatMap}></img>
         )}
+      </div>
       </div>
 
       <PlayerMovement

@@ -18,6 +18,12 @@ const Combat = ({
   partyData,
   partyRolls,
   showNotification,
+  battleGroup,
+  setBattleGroup,
+  updateBattleGroup,
+  role,
+  updateKillFeed,
+  sendPlayerRoll
 }) => {
   const [newMonsterData, setNewMonsterData] = useState(
     monsterData ? [...monsterData] : []
@@ -35,6 +41,8 @@ const Combat = ({
       setNewMonsterData([]);
     }
   }, [monsterData]);
+
+ 
 
   useEffect(() => {
     if (partyPosition) {
@@ -58,8 +66,15 @@ const Combat = ({
         partyData={partyData}
         partyRolls={partyRolls}
         users={users}
+        battleGroup={battleGroup}
+        setBattleGroup={setBattleGroup}
+        updateBattleGroup={updateBattleGroup}
+        role={role}
+        sendMonsterInfo={sendMonsterInfo}
+        monsterData={monsterData}  
+        updateKillFeed={updateKillFeed}      
       />
-
+      <div className="outer-combat-wrapper">
       <div id="contentContainer">
         {newMonsterData &&
           monsterData &&
@@ -103,6 +118,52 @@ const Combat = ({
             </Draggable>
           ))}
 
+
+{/* {newPartyPosition.filter((player) => player.name !== name)
+          .map((user, index) => (
+            <Draggable
+            bounds="parent"
+              onDrag={(e, ui) => {
+                const x = user.position.x;
+                const y = user.position.y;
+
+                let updatedList = newPartyPosition.map((item) => {
+                  if (user.value === item.value) {
+                    return {
+                      ...item,
+                      xPosition: x + ui.deltaX,
+                      yPosition: y + ui.deltaY,
+                    };
+                  } else {
+                    return item;
+                  }
+                });
+
+                setNewPartyPosition(updatedList);
+              }}
+              defaultClassName="absolute"
+              defaultPosition={{ x: user.position.x, y: user.position.y }}
+              key={user.name}
+              id={user.name}
+             
+            >
+              <div className={`drag-wrapper ${user.position.size}`}>
+               <div className="drag-pic-wrapper">
+                <img
+                  alt=""
+                  src={user.icon}
+                  className="youSuck"
+                ></img>
+                </div>
+                <div className="party-drag-cover"></div>
+              </div>
+            </Draggable>
+          ))} */}
+
+
+              
+
+
         {newPartyPosition.filter((player) => player.name !== name)
           .map((user, index) => (
             <div
@@ -130,9 +191,15 @@ const Combat = ({
             </div>
           ))}
 
+
+
+
+
+
         {combatMap && (
           <img className="combat-image" alt="" src={combatMap}></img>
         )}
+      </div>
       </div>
 
       <MonsterCreator
@@ -146,6 +213,7 @@ const Combat = ({
         clearPlayerPosition={clearPlayerPosition}
         activeMonster={activeMonster}
         showNotification={showNotification}
+        sendPlayerRoll={sendPlayerRoll}
       />
     </div>
   );

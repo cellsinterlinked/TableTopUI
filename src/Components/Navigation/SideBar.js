@@ -68,7 +68,11 @@ const SideBar = (
     partyData,
     partyRolls,
     stupidHack,
-    notes
+    notes,
+    battleGroup,
+    setBattleGroup,
+    updateBattleGroup,
+    updateKillFeed
   }
     ) => {
 
@@ -198,6 +202,10 @@ const SideBar = (
 
     <MapDrawer show={combatDrawerOpen}>
     {role === "DM" && <Combat 
+      updateKillFeed={updateKillFeed}
+      updateBattleGroup={updateBattleGroup}
+      battleGroup={battleGroup}
+      setBattleGroup={setBattleGroup}
       setUserYPosition={setUserYPosition} 
       setUserXPosition={setUserXPosition} 
       userXPosition={userXPosition} 
@@ -217,9 +225,14 @@ const SideBar = (
       showNotification={showNotification}
       partyData={partyData}
       partyRolls={partyRolls}
+      sendPlayerRoll={sendPlayerRoll}
       />}
 
       {role === "PLAYER" && partyData[name] && partyData[name].text.portrait !== "" &&  <PlayerCombat 
+      updateKillFeed={updateKillFeed}
+      updateBattleGroup={updateBattleGroup}
+      setBattleGroup={setBattleGroup}
+      battleGroup={battleGroup}
       setUserYPosition={setUserYPosition} 
       setUserXPosition={setUserXPosition} 
       userXPosition={userXPosition} 

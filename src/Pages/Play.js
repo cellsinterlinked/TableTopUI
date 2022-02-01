@@ -108,6 +108,16 @@ const Play = ({ location }) => {
       : []
   );
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const [battleGroup, setBattleGroup] = useState(
+    sessionStorage.getItem('battleGroup')
+      ? JSON.parse(sessionStorage.getItem('battleGroup'))
+      : []
+  );
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
   // const ENDPOINT = 'http://localhost:5000';
 
@@ -137,8 +147,6 @@ const Play = ({ location }) => {
     });
   }, [ENDPOINT, location.search]);
 
-  
-
   useEffect(() => {
     socket.on('stats', (stats) => {
       setPartyData({ ...partyData, [stats.user]: stats });
@@ -167,8 +175,6 @@ const Play = ({ location }) => {
       setUsers(users);
     });
   }, [map]);
-
-
 
   useEffect(() => {
     socket.on('npc', (npc) => {
@@ -202,7 +208,7 @@ const Play = ({ location }) => {
     });
   }, [notes]);
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
 
   useEffect(() => {
     socket.on('playerMessage', (playerMessage) => {
@@ -223,10 +229,13 @@ const Play = ({ location }) => {
 
   useEffect(() => {
     socket.on('sendPlayerPosition', (sendPlayerPosition) => {
-      let newArr = partyPosition.filter(player => player.name !== sendPlayerPosition.name)
+      let newArr = partyPosition.filter(
+        (player) => player.name !== sendPlayerPosition.name
+      );
       setPartyPosition([
         ...newArr,
-        {name:sendPlayerPosition.name, 
+        {
+          name: sendPlayerPosition.name,
           position: sendPlayerPosition.position,
           icon: sendPlayerPosition.icon,
         },
@@ -239,16 +248,48 @@ const Play = ({ location }) => {
 
   useEffect(() => {
     socket.on('sendMonsterInfo', (sendMonsterInfo) => {
+      if (battleGroup.length === 0) {
+        let battleArr = []
+        Object.keys(partyData).forEach(user => battleArr.push({id: partyData[user].user, icon: partyData[user].text.portrait, dead: false, role: "player"}))
+        sendMonsterInfo.forEach(monster => battleArr.push({id: monster.id, icon: monster.icon, dead: monster.dead, value: monster.value, role: "monster"}))
+        setBattleGroup([...battleArr])
+      }
+        
+
+
       setMonsterData([...sendMonsterInfo]);
     });
     socket.on('roomData', ({ users }) => {
       setUsers(users);
     });
-  }, [monsterData]);
+  }, [monsterData, partyData, battleGroup]);
+  /////////////////////////////////////////////////////////////////////////////////////////
 
+  useEffect(() => {
+    socket.on('updateBattleGroup', (updatedGroup) => {
+      console.log("this is updated battle group" + updatedGroup)
+      setBattleGroup([...updatedGroup])
+    });
+    socket.on('roomData', ({ users }) => {
+      setUsers(users);
+    });
+  }, [battleGroup])
+
+  useEffect(() => {
+    socket.on('updateKillFeed', (updateKillFeed) => {
+      console.log("actually updating kill feed")
+      setBattleGroup([...updateKillFeed.newBattleGroup])
+      setMonsterData([...updateKillFeed.newData])
+    });
+    socket.on('roomData', ({ users }) => {
+      setUsers(users);
+    });
+  }, [monsterData, battleGroup])
+///////////////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     socket.on('clearMonsterInfo', (clearValue) => {
       setMonsterData(clearValue);
+      setBattleGroup([])
     });
     socket.on('roomData', ({ users }) => {
       setUsers(users);
@@ -306,6 +347,7 @@ const Play = ({ location }) => {
     window.sessionStorage.setItem('monsterData', JSON.stringify(monsterData));
     window.sessionStorage.setItem('combatMap', JSON.stringify(combatMap));
     window.sessionStorage.setItem('notes', JSON.stringify(notes));
+    window.sessionStorage.setItem('battleGroup', JSON.stringify(battleGroup));
   }, [
     stats,
     partyData,
@@ -318,6 +360,7 @@ const Play = ({ location }) => {
     combatMap,
     stupidHack,
     notes,
+    battleGroup,
   ]);
   /// removed npc notes
 
@@ -385,10 +428,10 @@ const Play = ({ location }) => {
 
   const sendPlayerPosition = (position) => {
     // if (userXPosition !== 0 && userYPosition !== 0 && stats.portrait) {
-      let icon = stats.portrait;
-      socket.emit('sendPlayerPosition', position, name, icon);
-      showNotification('Movement Logged');
-      console.log('triggered send player position');
+    let icon = stats.portrait;
+    socket.emit('sendPlayerPosition', position, name, icon);
+    showNotification('Movement Logged');
+    console.log('triggered send player position');
     // }
   };
 
@@ -402,7 +445,6 @@ const Play = ({ location }) => {
     let clearValue = [];
     socket.emit('clearMonsterInfo', clearValue);
     showNotification('Monsters Cleared');
-   
   };
 
   const clearPlayerPosition = () => {
@@ -414,6 +456,16 @@ const Play = ({ location }) => {
   const sendCombatMap = (map) => {
     socket.emit('sendCombatMap', map);
   };
+
+  const updateBattleGroup = (updatedGroup) => {
+    socket.emit('updateBattleGroup', updatedGroup)
+    console.log("this is sending updated group" + JSON.stringify(updatedGroup))
+  }
+
+  const updateKillFeed = (newData, newBattleGroup) => {
+    socket.emit('updateKillFeed', newData, newBattleGroup)
+    console.log("killFeed sent")
+  }
 
   // const bigLogoutFunction  = () => {
   //   socket.emit('logout', name)
@@ -502,6 +554,10 @@ const Play = ({ location }) => {
 
       {!error && (
         <SideBar
+        updateKillFeed={updateKillFeed}
+        updateBattleGroup={updateBattleGroup}
+        setBattleGroup={setBattleGroup}
+        battleGroup={battleGroup}
           notes={notes}
           stupidHack={stupidHack}
           sendMonsterInfo={sendMonsterInfo}
