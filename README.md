@@ -64,7 +64,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/dungeons%20and%20dragons/30a9d01c-34e1-44d5-adfb-a8ef33f99847_p9cbji.png](https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png)
+[![Product Name Screen Shot][product-screenshot]](https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
@@ -80,21 +80,21 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+<!-- ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps. -->
 
-### Prerequisites
+<!-- ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 
 - npm
   ```sh
   npm install npm@latest -g
-  ```
+  ``` -->
 
-### Installation
+<!-- ### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -110,7 +110,7 @@ This is an example of how to list things you need to use the software and how to
    const API_KEY = 'ENTER YOUR API';
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- USAGE EXAMPLES -->
 
@@ -136,7 +136,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 
 <!-- CONTRIBUTING -->
 
-## Contributing
+<!-- ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -149,15 +149,15 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- LICENSE -->
 
-## License
+<!-- ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- CONTACT -->
 
@@ -195,4 +195,4 @@ Project Back end Link: [https://github.com/cellsinterlinked/TableTopServer](http
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png
