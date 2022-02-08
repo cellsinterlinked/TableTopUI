@@ -64,7 +64,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/dungeons%20and%20dragons/30a9d01c-34e1-44d5-adfb-a8ef33f99847_p9cbji.png]](https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png)
+[![Product Name Screen Shot][https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/dungeons%20and%20dragons/30a9d01c-34e1-44d5-adfb-a8ef33f99847_p9cbji.png](https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
