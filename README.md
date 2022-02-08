@@ -28,7 +28,7 @@
 <h3 align="center">Tabletop Assistant</h3>
 
   <p align="center">
-    Tabletop Assistant is a project built to help people play Deungeons and Dragons remotely. In  it's current state it is to be used in tandem with  some kind of group voice communication such as Discord, Skype, or Zoom. This functionality is not provided by Tabletop Assistant. 
+    Tabletop Assistant is a project built to help people play Deungeons and Dragons remotely. In  it's current state it is to be used in tandem with  some kind of group voice communication such as Discord, Skype, or Zoom.
     <br />
     <a href="https://tabletopassistant.netlify.app">View Demo</a>
   </p>
@@ -66,7 +66,9 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://res.cloudinary.com/dbnapmpvm/image/upload/v1644344017/Dungeons%20and%20Dragons/30A9D01C-34E1-44D5-ADFB-A8EF33F99847_p9cbji.png)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+Tabletop Assistant is a tool to use along side group voice applications like Discord or Zoom to hold games of Dungeons and Dragons Remotely. The Dungeon Master creates a session or "room" name that all of the players may join with. Players sign in with their character's name and will first enter their character's information and a portrait to display. Once this is done characters can make dice rolls, look at information the DM has posted such as NPC information and maps, as well as participate in combat on the combat screen. The combat screen allows for the DM to create and display Monsters, NPCs or other aspects of the environment on top of their selected combat map. Initiative, dice rolls, and locations of players and other units are all displayed and adjustable in real time. the DM and players may also chat to one another in order to send sensitive game information via a chat feature. These features all combined can help a remote game of Dungeons and Dragons feel like the group is actually playing at the table.
+
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description` -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -166,6 +168,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Scott Billings - [@twitter_handle](https://twitter.com/twitter_handle) - scottbillings88@gmail.com
 
 Project Front End Link: [https://github.com/cellsinterlinked/TableTopUI](https://github.com/cellsinterlinked/TableTopUI)
+<br/>
 Project Back end Link: [https://github.com/cellsinterlinked/TableTopServer](https://github.com/cellsinterlinked/TableTopServer)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
