@@ -189,13 +189,21 @@ const Combat = ({
                 transition: 'left 0.5s ease-in, top 0.5s ease-in',
               }}
             >
-              {partyData[index] && (
+                <div className="drag-pic-wrapper">
+                <img
+                  alt=""
+                  src={user.icon}
+                  className="youSuck"
+                ></img>
+                </div>
+                <div className="party-drag-cover"></div>
+              {/* {partyData[index] && (
                 <img
                   alt=""
                   src={partyData[user.name].text.portrait}
                   className="youSuck"
                 ></img>
-              )}
+              )} */}
             </div>
           ))}
 

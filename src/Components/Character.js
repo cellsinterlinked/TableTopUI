@@ -24,6 +24,7 @@ const Character = ({partyRolls, partyData, name, individualRole}) => {
   
     setPlayerStats(partyData[name])
     setCorrectName(newName())
+    console.log(partyData[name])
   },[partyData, name])
 
   useEffect(() => {
@@ -77,7 +78,7 @@ const totalFunc = () => {
       </div>}
 
 
-    {playerStats &&  <div className='char-Container'>
+    {playerStats && partyData[name] &&  <div className='char-Container'>
       {/* <button onClick={() => console.log(playerStats)}>CharacterInfo</button> */}
       <div className="player-container-1">
         <div className="player-front-portrait">

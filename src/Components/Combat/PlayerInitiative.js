@@ -16,6 +16,7 @@ useEffect(() => {
     const items = Array.from(playerOrder);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
+    console.log("items before change", items)
     setPlayerOrder(items);
     updateBattleGroup(items)
 
