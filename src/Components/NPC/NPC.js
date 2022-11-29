@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './NPC.css';
-import ScrollToBottom from 'react-scroll-to-bottom';
+
 
 
 const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes, role, stupidHack, notes}) => {
@@ -37,11 +37,14 @@ const NPC = ({item, deleteNPCData, sendNPCNote, notePost, setNotePost, npcNotes,
       {displayNotes && 
       <div className="scroll-hate">
         <h1 className="notes-header">Notes about {item.name} </h1>
-      <ScrollToBottom className="npc-notes-container">
+      <div className="npc-notes-container">
+        {notes && notes === {} && <h1>Enter Text Below To Leave Notes About This NPC</h1>}
+        <div className="notes-fixed-box" >
         {notes && notes.map((note, index) => (<li key={index}>{note.note}</li>) )}
         
-        {notes && notes === {} && <h1>Enter Text Below To Leave Notes About This NPC</h1>}
-      </ScrollToBottom>
+        </div>
+
+      </div>
       </div>}
       {displayNotes &&
         <div className="npc-notes-input-container">

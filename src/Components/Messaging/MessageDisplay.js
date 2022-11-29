@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './MessageDisplay.css';
 import Message from './Message';
-import ScrollToBottom from 'react-scroll-to-bottom';
+
 
 const MessageDisplay = ({messages, name}) => {
   const [newArr, setNewArr] = useState(null)
@@ -17,9 +17,12 @@ const MessageDisplay = ({messages, name}) => {
   },[messages, name])
 
    return (
-    <ScrollToBottom className='message-display-container'>
-      {messages && newArr && newArr.map((message) => <Message key={message.message} message={message} name={name}/> )}
-    </ScrollToBottom>
+    <div className='message-display-container'>
+      <div className="message-fixed-box">
+      {messages && newArr && newArr.map((message, index) => <Message key={index} message={message} name={name}/> )}
+      </div>
+
+    </div>
   )
 }
 

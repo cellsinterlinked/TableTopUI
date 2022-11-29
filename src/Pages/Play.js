@@ -118,8 +118,8 @@ const Play = ({ location }) => {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
-  // const ENDPOINT = 'http://localhost:5000';
+  // const ENDPOINT = 'https://table-top-sever.herokuapp.com/'
+  const ENDPOINT = 'http://localhost:5000';
 
   useEffect(() => {
     const { name, room, role } = queryString.parse(location.search);
@@ -218,7 +218,6 @@ const Play = ({ location }) => {
         playerMessage.name !== name
       ) {
         setUnreadMessages(unreadMessages + 1);
-        notificationAudio(audioClips[0].sound);
       }
       console.log('use effect triggered');
     });

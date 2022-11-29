@@ -1,9 +1,21 @@
 .message-display-container {
+  position: relative;
   /* display: flex;
   justify-content: center; */
   width: 100%;
   height: 80%;
-  background-color: rgba(0, 0, 0, 0.657);
+  /* background-color: rgba(0, 0, 0, 0.657); */
   /* padding: 1rem; */
   padding-top: 3px;
+
+  /* overflow: scroll; */
+}
+
+.message-fixed-box {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  top: auto;
+  max-height: 100%;
+  overflow: scroll; 
 }

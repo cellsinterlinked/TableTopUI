@@ -7,40 +7,30 @@ import {MdLiveHelp} from 'react-icons/md'
 const Character = ({partyRolls, partyData, name, individualRole}) => {
   const [playerStats, setPlayerStats] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
-  const [correctName, setCorrectName] = useState("")
+  const [correctName, setCorrectName] = useState(name)
 
   // let user = props.name
 
   // let playerStats = props.partyData[user] || null;
   // let playerRoll = props.partyRolls[user]
 
-  const funFunction = async () => {
-     setIsLoading(true)
-     setTimeout(() => {setIsLoading(false)}, 1000)
+  // const funFunction = async () => {
+  //    setIsLoading(true)
+  //    setTimeout(() => {setIsLoading(false)}, 1000)
 
-  }
+  // }
 
   useEffect(() => {
   
     setPlayerStats(partyData[name])
-    setCorrectName(newName())
-    console.log(partyData[name])
   },[partyData, name])
 
-  useEffect(() => {
-    funFunction()
-  }, [individualRole])
+  // useEffect(() => {
+  //   funFunction()
+  // }, [individualRole])
 
   
-const newName = () => {
-  let arr = name.split(" ")
-  let newArr = []
-  for (let i=0; i<arr.length; i++){
-    newArr.push (arr[i].charAt(0).toUpperCase() + arr[i].slice(1));
-  }
-  return newArr.join(" ");
-  
-}
+
 
 console.log(individualRole, "this is individual role")
 
